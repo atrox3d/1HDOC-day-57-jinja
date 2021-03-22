@@ -21,5 +21,11 @@ def guess(name):
     return render_template("guess.html", name=name.capitalize(), age=age, gender=gender)
 
 
+@app.route("/blog")
+def blog():
+    posts = api.get_posts()
+    return render_template("blog.html", posts=posts)
+
+
 if __name__ == "__main__":
     app.run(debug=True, host=util.network.get_ipaddress())
