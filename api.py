@@ -14,12 +14,12 @@ def call_api(url, name):
     return response.json()
 
 
-def get_age(name):
+def get_age(name) -> str:
     json = call_api("https://api.agify.io", name)
     return json["age"]
 
 
-def get_gender(name):
+def get_gender(name) -> str:
     json = call_api("https://api.genderize.io", name)
     return json["gender"]
 

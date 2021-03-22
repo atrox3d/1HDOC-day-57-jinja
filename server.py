@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import util.network
 import random
 from datetime import datetime as dt
+import api
 
 app = Flask(__name__)
 
@@ -11,6 +12,13 @@ def home():
     random_number = random.randint(1, 10)
     year = dt.now().year
     return render_template("index.html", num=random_number, year=year)
+
+
+@app.route("/guess/<name>")
+def guess(name):
+    age = api.get_age(name)
+    gender = api.get_gender(name)
+    return render_template("guess.html", name=name.capitalize(), age=age, gender=gender)
 
 
 if __name__ == "__main__":
