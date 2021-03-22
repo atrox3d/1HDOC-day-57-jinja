@@ -21,8 +21,9 @@ def guess(name):
     return render_template("guess.html", name=name.capitalize(), age=age, gender=gender)
 
 
-@app.route("/blog")
-def blog():
+@app.route("/blog/<num>")
+def get_blog(num):
+    # posts = [post for post in api.get_posts() if post["id"] == num]
     posts = api.get_posts()
     return render_template("blog.html", posts=posts)
 
